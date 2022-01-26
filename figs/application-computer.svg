@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.1//EN'
+  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg baseProfile="full" height="360px" id="svg_document" preserveAspectRatio="xMidYMid meet" style="zoom: 1;" version="1.1" viewBox="0 0 960 360" width="960px" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<!-- Created with macSVG - https://macsvg.org/ - https://github.com/dsward2/macsvg/ -->
+	<title id="svg_document_title">application-computer.svg</title>
+	<defs id="svg_document_defs"/>
+	<g id="main_group"/>
+
+	<rect fill="#ffffff" height="170px" id="rect3" stroke="#000000" stroke-width="3px" transform="" width="640px" x="180px" y="5px"/>
+	<text fill="#000000" font-family="Helvetica" font-size="32px" id="text3" stroke="none" stroke-width="1px" style="outline-style:none;" text-anchor="middle" text-rendering="geometricPrecision" transform="" x="480px" y="90px">Application</text>
+
+	<rect fill="#ffffff" height="170px" id="rect1" stroke="#000000" stroke-width="3px" transform="" width="640px" x="180px" y="175px"/>
+	<text fill="#000000" font-family="Helvetica" font-size="32px" id="text1" stroke="none" stroke-width="1px" style="outline-style:none;" text-anchor="middle" text-rendering="geometricPrecision" transform="" x="480px" y="270px">Computer</text>
+</svg>
