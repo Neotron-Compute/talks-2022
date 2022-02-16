@@ -4,6 +4,10 @@ This repository contains the slides for my talk at [ACCU 2022].
 
 It is under embargo until 2022-04-09T13:00:00Z.
 
+## Building
+
+These slides are built using [marp](https://marp.app). The easiest way to render them is to use Visual Studio Code and then install the [marp extension](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode).
+
 ## Licence
 
 The material herein is licensed as [Creative Commons BY-SA-NC 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/).
