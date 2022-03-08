@@ -201,7 +201,7 @@ A - Track; B - Geometric Sector; C - Sector; D - Cluster
 - Like, move the *common* parts out of each application?
 - The bits that *operate* the computer ... *system* ?
 
-![w:800px](./figs/application-computer.svg)
+![centre w:800px](./figs/application-computer.svg)
 
 ---
 
@@ -210,7 +210,7 @@ A - Track; B - Geometric Sector; C - Sector; D - Cluster
 - Like, move the *common* parts out of each application?
 - The bits that *operate* the computer ... *system* ?
 
-![w:800px](./figs/application-os-computer.svg)
+![centre w:800px](./figs/application-os-computer.svg)
 
 ---
 
@@ -222,6 +222,8 @@ A - Track; B - Geometric Sector; C - Sector; D - Cluster
 - It provides portability ✅
 
 ---
+
+<!-- header: "" -->
 
 # Our Journey...
 
@@ -352,7 +354,7 @@ Honeywell bought GE's computer division
 * Xenix UNIX
 * OS/2 with IBM
 * 16-bit Windows (1.x, 2.x, 3.x)
-* 16/32-bit Windows (95, 98, ME)
+* 16/32-bit Windows (95, 98, Me)
 * 32-bit Windows NT (3.1, 3.5, 4, 2000, XP, Vista, 7, 8, 10, 11)
 
 ---
@@ -411,7 +413,9 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 ---
 
-![centre h:600px](./figs/workbench.png)
+![centre h:560px](./figs/workbench.png)
+
+###### Chiffre01 - Wikipedia - CC BY-SA 4.0
 
 ---
 
@@ -424,7 +428,9 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 ---
 
-![centre h:600px](./figs/gemtos.png)
+![centre h:500px](./figs/gemtos.png)
+
+###### MJaap - Wikipedia - CC BY-SA 4.0
 
 ---
 
@@ -457,6 +463,8 @@ Microsoft said sorry with $100M + added DEC Alpha port
 <!-- systemd, pipewire, Wayland - it's a pick-and-mix OS! -->
 
 ---
+
+<!-- header: "" -->
 
 # Our Journey...
 
@@ -551,6 +559,8 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 ---
 
+<!-- header: "" -->
+
 # Our Journey...
 
 1. What is a 'DOS' (or even an 'OS')?
@@ -581,6 +591,16 @@ Microsoft said sorry with $100M + added DEC Alpha port
 	* Especially drivers!
 * *Operating Systems* even more so
 	* They're both ancient...
+
+---
+
+# Neotron OS
+* Single address space
+* OS API is public
+	* Jump Table given to every application
+* Executables but no ~~Shared Objects~~
+* Paths like `0:/FOLDER/CANYON.MID`
+* Functions like `open_file: fn(fn: &str, mode: Mode) -> Result<FileHandle, Error>`
 
 ---
 
@@ -624,7 +644,7 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 # Portability
 
-* Solves the *driver problem*
+* Solving the *driver problem*
 	* I don't care about drivers for *your* machine
 * Neotron-BIOS provides hardware-specific code
 * The Neotron-OS provides hardware-independent code
@@ -633,6 +653,10 @@ Microsoft said sorry with $100M + added DEC Alpha port
 ---
 
 # Why Rust?
+
+* Performance
+* Developer Experience
+* Community
 
 ---
 
@@ -648,13 +672,34 @@ Microsoft said sorry with $100M + added DEC Alpha port
 # BIOS / DOS ABI
 
 ```rust
+#[repr(C)]
 struct ApiStaticString {
 	string: *const u8,
 	length: usize
 }
 
+#[repr(C)]
 struct BiosApi {
-	get_version: fn() -> ApiStaticString,
+	get_version: extern "C" fn() -> ApiStaticString,
+}
+```
+
+---
+
+# BIOS / DOS ABI
+
+```rust
+static API: Option<&'static BiosApi> = None;
+
+fn get_version() -> ApiStaticString {
+	let api = unsafe { API.unwrap() };
+	(api.get_version)()
+}
+
+fn os_entry(api: *const BiosApi) {
+	unsafe { API = Some(&*api); }
+	let version = get_version();
+	println!("BIOS version: {}", version);
 }
 ```
 
@@ -670,10 +715,83 @@ struct BiosApi {
 
 # Where is Neotron at right now?
 
+## [Neotron 32](https://github.com/neotron-compute/neotron-32)
+
+* Texas Instruments TM4C processor
+* 80 MHz Cortex-M4
+* 32 KiB RAM
+* Real-time VGA over SPI
+
 ---
 
-# Questions!
+# Where is Neotron at right now?
+
+## [Neotron Pico](https://github.com/neotron-compute/neotron-pico)
+
+* Raspberry Pi RP2040 processor
+* 2x 133 MHz Cortex-M0+
+* 256 KiB RAM
+* Hardware-accelerated VGA over PIO
+* 16-bit Audio CODEC, SDMMC, Slots
+
+---
+
+# Bonus goodies!
+
+* Neotron Pico is micro-ATX sized
+* Design includes a *Board Management Controller* ([*BMC*](https://github.com/neotron-compute/neotron-bmc))
+	* Keyboard controller
+	* Power control
+	* Status LEDs, Power button, Reset button
+	* Extra UART
+
+---
+
+# Expanding your computer
+
+* The DEC PDP-11 has Unibus
+* 8080/Z80 machine have the S100 bus
+* The PC-compatibles had the ISA bus
+* We have the Neotron Bus!
+
+---
+
+<style scoped>
+table {
+  font-size: 60%;
+}
+</style>
+
+# The Neotron Bus
+
+| Pin | Function     | Pin | Function     |
+|:----|:-------------|:----|:-------------|
+| 1   | SPI COPI     | 2   | Ground       |
+| 3   | SPI CIPO     | 4   | Ground       |
+| 5   | SPI CLK      | 6   | Ground       |
+| 7   | SPI /CS      | 8   | /IRQ         |
+| 9   | I²C SDA      | 10  | I²C SCL      |
+| 11  | EEPROM Addr0 | 12  | EEPROM Addr1 |
+| 13  | EEPROM Addr2 | 14  | /RESET       |
+| 15  | 5V           | 16  | 5V           |
+| 17  | 3.3V         | 18  | 3.3V         |
+| 19  | Ground       | 20  | Ground       |
+
+<!-- EEPROM Addr pins give the slot number; wire to a 24C256 EEPROM, which indicates what is fitted to that slot -->
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/neotron-pico.jpeg)
+
+## Neotron Pico
+
+---
+
+# That's all folks!
 
 * @therealjpster on Twitter
-* https://github.com/neotron-compute
-  
+* @thejpster everywhere else
+* Visit #neotron on Matrix
+* See https://neotron-compute.github.io
