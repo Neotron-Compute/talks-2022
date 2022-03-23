@@ -18,12 +18,9 @@ style: |
 marp: true
 ---
 
-<!-- _class: lead -->
+<!-- _class: photo --> 
 
-# Writing a single-tasking 'DOS' for Arm microcontrollers, in Rust
-
-### Jonathan 'theJPster' Pallant
-### ![](https://icongr.am/octicons/mark-github.svg) https://github.com/neotron-compute
+![bg cover](./figs/title.png)
 
 ---
 
@@ -33,8 +30,9 @@ marp: true
 - Rust Programmer and Trainer
 	- Formerly: C++, Python, Pascal, BASIC...
 - Ferrous Systems (www.ferrous-systems.com)
-- ![](https://icongr.am/octicons/mark-github.svg) [thejpster](https://github.com/thejpster)
-- ![](https://icongr.am/devicon/twitter-original.svg) [therealjpster](https://twitter.com/therealjpster)
+- ![](https://icongr.am/octicons/mark-github.svg) [github.com/thejpster](https://github.com/thejpster)
+- ![](https://icongr.am/devicon/twitter-original.svg) [twitter.com/therealjpster](https://twitter.com/therealjpster)
+- ![](https://icongr.am/clarity/book.svg) [neotron-compute.github.io](https://neotron-compute.github.io)
 
 ---
 
