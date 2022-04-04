@@ -327,6 +327,8 @@ Honeywell bought GE's computer division
 * ~~Hierarchical~~ File System
 * *pip* understands `CON:` as a __psuedo-file__ with *special properties*
 
+[Video](https://youtu.be/nFfb94RQGwg?t=48)
+
 <!-- single user, single tasking -->
 
 ---
@@ -354,6 +356,8 @@ Honeywell bought GE's computer division
 * 16-bit Windows (1.x, 2.x, 3.x)
 * 16/32-bit Windows (95, 98, Me)
 * 32-bit Windows NT (3.1, 3.5, 4, 2000, XP, Vista, 7, 8, 10, 11)
+
+[Click me if you dare](https://youtu.be/bLuC4yZk7us)
 
 ---
 
@@ -489,41 +493,50 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 # Microsoft Windows NT
 
-* Kernel-space vs User-space
-* Kernel API is private
-	* Must use OS supplied static libraries
-* EXEs and DLLs
-* Paths like `C:\WINDOWS\CANYON.MID`
-* Functions like `CreateFileA()`
+- Kernel-space vs User-space
+- Kernel API is private
+	- Must use OS supplied static libraries
+- EXEs and DLLs
+- Paths like `C:\WINDOWS\CANYON.MID`
+- Functions like `CreateFileA()`
 
 ---
 
 # POSIX/Linux
-* Kernel-space vs User-space
-* Kernel API is public
-	* Use CPU *syscall* instructions
-* Executables and Shared Objects
-* Paths like `/home/jonathan/canyon.mid`
-* Functions like `open()`
+- Kernel-space vs User-space
+- Kernel API is public
+	- Use CPU *syscall* instructions
+- Executables and Shared Objects
+- Paths like `/home/jonathan/canyon.mid`
+- Functions like `open()`
 
 ---
 
 # POSIX/macOS
-* Kernel-space vs User-space
-* Kernel API is private
-	* Must use OS supplied static libraries
-* Executables and Shared Objects
-* Paths like `/Users/jonathan/canyon.mid`
-* Functions like `open()`
+- Kernel-space vs User-space
+- Kernel API is private
+	- Must use OS supplied static libraries
+- Executables and Shared Objects
+- Paths like `/Users/jonathan/canyon.mid`
+- Functions like `open()`
 
 ---
 
-# Common APIs
+# Common APIs for Applications
 
 * File Handling
 	* Open, Close, Read, Write, Directories
+* Program Start/Stop
 * Console Handling
 	* Reading / Writing Text
+* Windows / 2D / 3D / Video
+
+<!-- Used to be user-space APIs for buttons and widgets, but it's more common to just provide a blank 'canvas' for the application to draw on -->
+
+---
+
+# Common APIs for Applications (2)
+
 * Memory Management
 * Networking (with Sockets)
 * Processes and Threads
@@ -531,14 +544,14 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 ---
 
-# OS Interfaces
+# API vs ABI
 
 * *Application Programming Interface* (API)
 	* Source-level compatiblity - function names, argument order
 	* Support multiple CPU architectures
 * *Application Binary Interface* (ABI)	
 	* Binary-level compatibility - register/stack usage
-	* Support single CPU architecture
+	* Support single CPU architecture (although ... [ARM64EC](https://blogs.windows.com/windowsdeveloper/2021/06/28/announcing-arm64ec-building-native-and-interoperable-apps-for-windows-11-on-arm/))
 
 <!-- Debian has no fixed API across x86/ARM/PPC/etc. FreeBSD AMD64 presents ABI compatibility with Linux AMD64 -->
 
@@ -596,9 +609,14 @@ Microsoft said sorry with $100M + added DEC Alpha port
 * Single address space
 * OS API is public
 	* Jump Table given to every application
-* Executables but no ~~Shared Objects~~
+* Executables, but no Shared Objects
 * Paths like `0:/FOLDER/CANYON.MID`
-* Functions like `open_file: fn(fn: &str, mode: Mode) -> Result<FileHandle, Error>`
+* Functions like:
+  ```rust
+  open_file: fn(path: &str, mode: os::Mode) -> os::Result<FileHandle, Error>
+  ```
+
+<!-- Applications can load more code into RAM and jump to it if they wish (overlays) -->
 
 ---
 
@@ -615,6 +633,10 @@ Microsoft said sorry with $100M + added DEC Alpha port
 * Longevity
 * Education
 * Money
+
+---
+
+![drop-shadow width:1000px centre](./figs/computer.svg)
 
 ---
 
@@ -647,6 +669,8 @@ Microsoft said sorry with $100M + added DEC Alpha port
 * Neotron-BIOS provides hardware-specific code
 * The Neotron-OS provides hardware-independent code
 * You supply the Application!
+
+<!-- 2.5m lines of AMDGPU driver, out of around 28m lines total in Linux 5.9, of which 1.8m is auto-genenerated header file -->
 
 ---
 
@@ -687,17 +711,36 @@ struct BiosApi {
 # BIOS / DOS ABI
 
 ```rust
-static API: Option<&'static BiosApi> = None;
+static mut API: Option<&'static Api> = None;
+static mut VGA_CONSOLE: Option<VgaConsole> = None;
 
-fn get_version() -> ApiStaticString {
-	let api = unsafe { API.unwrap() };
-	(api.get_version)()
-}
-
-fn os_entry(api: *const BiosApi) {
-	unsafe { API = Some(&*api); }
-	let version = get_version();
+#[no_mangle]
+pub extern "C" fn main(api: &'static Api) -> !
+	unsafe { 
+		API = Some(api);
+		VGA_CONSOLE = Some(VgaConsole::new(api));
+	}
+	let version = (api.get_version)();
 	println!("BIOS version: {}", version);
+	panic!();
+}
+```
+
+---
+
+# BIOS / DOS ABI (redux)
+
+```rust
+static API: ApiWrapper = ApiWrapper::new();
+static VGA_CONSOLE: VgaConsole = VgaConsole::new();
+
+#[no_mangle]
+pub extern "C" fn main(api: &'static Api) -> !
+	API.init(api);
+	VGA_CONSOLE.init();
+	let version = API.get_version();
+	println!("BIOS version: {}", version);
+	panic!();
 }
 ```
 
@@ -707,7 +750,7 @@ fn os_entry(api: *const BiosApi) {
 
 * Works the same way
 * Entry point gets `*const OsApi`
-	* Calls normal C-style `main`
+* CRT sets up args/env and calls normal C-style `main`
 
 ---
 
@@ -719,6 +762,7 @@ fn os_entry(api: *const BiosApi) {
 * 80 MHz Cortex-M4
 * 32 KiB RAM
 * Real-time VGA over SPI
+* PWM Audio, SDMMC, 2x Joytick, MIDI
 
 ---
 
@@ -748,7 +792,7 @@ fn os_entry(api: *const BiosApi) {
 # Expanding your computer
 
 * The DEC PDP-11 has Unibus
-* 8080/Z80 machine have the S100 bus
+* 8080/Z80 machine have the S-100 bus
 * The PC-compatibles had the ISA bus
 * We have the Neotron Bus!
 
@@ -789,7 +833,11 @@ table {
 
 # That's all folks!
 
-* @therealjpster on Twitter
-* @thejpster everywhere else
-* Visit #neotron on Matrix
+* __@therealjpster__ on Twitter (__@thejpster__ everywhere else)
+* Visit __#neotron__ on Matrix
 * See https://neotron-compute.github.io
+* Follow these fine people:
+	- @bitshiftmask @rustembedded @rustlang 
+	- @foone @ekuber @computermuseum
+* Find me later - let's chat!
+
