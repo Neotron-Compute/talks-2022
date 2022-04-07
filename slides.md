@@ -144,16 +144,6 @@ Let's play higher-lower
 
 ---
 
-# So an application just runs on the CPU?
-
-- Yes, and no.
-	* How much memory do you have?
-	* What I/O devices do you have?
-	* Is that the same as what the author had?
-	* Do you really want to write everything from scratch?
-
----
-
 # What does a DOS do?
 
 - It runs applications ✅
@@ -487,7 +477,7 @@ Microsoft said sorry with $100M + added DEC Alpha port
 * ~~Apple System/Carbon~~
 * Microsoft Windows NT (Win32)
 * POSIX (Portable Operating System Interface ... X?)
-* ... WASI?
+* Your web browser...?
 
 ---
 
@@ -715,7 +705,7 @@ static mut API: Option<&'static Api> = None;
 static mut VGA_CONSOLE: Option<VgaConsole> = None;
 
 #[no_mangle]
-pub extern "C" fn main(api: &'static Api) -> !
+pub extern "C" fn main(api: &'static BiosApi) -> !
 	unsafe { 
 		API = Some(api);
 		VGA_CONSOLE = Some(VgaConsole::new(api));
@@ -735,7 +725,7 @@ static API: ApiWrapper = ApiWrapper::new();
 static VGA_CONSOLE: VgaConsole = VgaConsole::new();
 
 #[no_mangle]
-pub extern "C" fn main(api: &'static Api) -> !
+pub extern "C" fn main(api: &'static BiosApi) -> !
 	API.init(api);
 	VGA_CONSOLE.init();
 	let version = API.get_version();
@@ -749,8 +739,10 @@ pub extern "C" fn main(api: &'static Api) -> !
 # DOS / Application ABI
 
 * Works the same way
-* Entry point gets `*const OsApi`
+* Entry point gets `&'static OsApi`
 * CRT sets up args/env and calls normal C-style `main`
+
+<!-- Rust-run-time? -->
 
 ---
 
