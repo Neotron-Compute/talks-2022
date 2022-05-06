@@ -18,9 +18,12 @@ style: |
 marp: true
 ---
 
-<!-- _class: photo --> 
+<!-- _class: lead -->
 
-![bg cover](./figs/title.png)
+# Writing a single-tasking 'DOS' for Arm microcontrollers, in Rust
+
+### Jonathan 'theJPster' Pallant
+### ![](https://icongr.am/octicons/mark-github.svg) https://github.com/neotron-compute
 
 ---
 

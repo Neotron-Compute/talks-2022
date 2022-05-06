@@ -1,8 +1,11 @@
-# ACCU 2022 Talk: Neotron - writing a single-tasking 'DOS' for Arm microcontrollers, in Rust
+# Neotron 2022 Talks: Neotron - writing a single-tasking 'DOS' for Arm microcontrollers, in Rust
 
-This repository contains the slides for my talk at [ACCU 2022].
+This repository contains the slides for my 2022 talks on Neotron.
 
-It is under embargo until 2022-04-09T13:00:00Z.
+This talk was given at:
+
+* ACCU on 8 April, 2022 in Bristol, England.
+* Centre for Computing History on 12 May, 2022 in Cambridge, England.
 
 ## Building
 
