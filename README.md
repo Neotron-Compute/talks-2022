@@ -9,7 +9,16 @@ This talk was given at:
 
 ## Building
 
-These slides are built using [marp](https://marp.app). The easiest way to render them is to use Visual Studio Code and then install the [marp extension](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode).
+These slides are built using [marp](https://marp.app).
+
+The easiest way to render them is to use Visual Studio Code and then install the [marp extension](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode). Or you can run:
+
+```console
+talks-2022 $ marp --watch --server .
+[  INFO ] [Server mode] Start server listened at http://localhost:8080/ ...
+```
+
+Then you can open http://localhost:8080/slides.md in your browser.
 
 ## Licence
 
