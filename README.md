@@ -6,6 +6,7 @@ This talk was given at:
 
 * ACCU on 8 April, 2022 in Bristol, England.
 * Centre for Computing History on 12 May, 2022 in Cambridge, England.
+* NDC TechTown on 1 September 2022, in Köngsberg, Norway.
 
 ## Building
 

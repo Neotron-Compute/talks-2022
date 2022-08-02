@@ -20,7 +20,7 @@ marp: true
 
 <!-- _class: lead -->
 
-# Writing a single-tasking 'DOS' for Arm microcontrollers, in Rust
+# Neotron - why write a brand new ‘DOS’ for Arm in Rust?
 
 ### Jonathan 'theJPster' Pallant
 ### ![](https://icongr.am/octicons/mark-github.svg) https://github.com/neotron-compute
@@ -69,21 +69,30 @@ marp: true
 - It manages files (on disk)
 - It provides portability
 
----
-
-# So what is an application?
-
-![drop-shadow](./figs/application.svg)
 
 ---
 
-# So what is an application?
+![centre w:909px](./figs/word.png)
 
-![drop-shadow](./figs/application-in-out.svg)
+---
 
-<!--
-Talk about batch processing, paper tapes, etc
--->
+![centre w:900px](./figs/word5.png)
+
+---
+
+![centre w:900px](./figs/word1.png)
+
+<!-- You can download Word v1 for DOS from winworldpc.com -->
+
+---
+
+<!-- _class: photo --> 
+
+##### twitter.com/asr33
+
+![bg cover](./figs/wordle.jpg)
+
+<!-- Your concept of what an application actually is is constrained by the medium through which you interact with that application. In reality, it exists as a pattern of 1s and 0s in the computer's memory, mixing instructions and data. This is the game "Wordle" played on an ASR33 teletype. -->
 
 ---
 
@@ -153,6 +162,45 @@ Let's play higher-lower
 - It runs on a computer ✅
 - __It manages files (on disk)__
 - It provides portability
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/IMG_0136.jpeg)
+
+## M.2 Solid State Disk
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/IMG_0137.jpeg)
+
+## 3.5" Hard Disk Drive
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/IMG_0139.jpeg)
+## 3.5" Floppy Disk and Drive
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/IMG_0138.jpeg)
+
+## 5.25" Floppy Disk and Drive
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/all-disks.jpg)
+
+## 8" / 5.25" / 3.5" Floppy Disk Comparison
 
 ---
 
@@ -284,7 +332,7 @@ Honeywell bought GE's computer division
 * Bell Labs - 1969
 * Ken Thompson, Dennis Ritchie, et. al
 * Initially single-tasking; non-portable
-	* written for the the DEC PDP-7, to play *Space Travel*
+	* written for the DEC PDP-7, to play *Space Travel*
 * Processes, Device Files, Hierarchical File System
 * Proves useful for Word Processing (with `roff`)
 * Re-written in *C* in 1973
