@@ -594,7 +594,7 @@ Microsoft said sorry with $100M + added DEC Alpha port
 	* Binary-level compatibility - register/stack usage
 	* Support single CPU architecture (although ... [ARM64EC](https://blogs.windows.com/windowsdeveloper/2021/06/28/announcing-arm64ec-building-native-and-interoperable-apps-for-windows-11-on-arm/))
 
-<!-- Debian has no fixed API across x86/ARM/PPC/etc. FreeBSD AMD64 presents ABI compatibility with Linux AMD64 -->
+<!-- Debian has no fixed ABI across x86/ARM/PPC/etc. FreeBSD AMD64 presents ABI compatibility with Linux AMD64 -->
 
 ---
 
@@ -805,7 +805,13 @@ pub extern "C" fn main(api: &'static BiosApi) -> !
 * 80 MHz Cortex-M4
 * 32 KiB RAM
 * Real-time VGA over SPI
-* PWM Audio, SDMMC, 2x Joytick, MIDI
+* PWM Audio, SDMMC, 2x Joystick, MIDI
+
+---
+
+# Neotron 32 PCB
+
+![centre h:500px](./figs/neotron-32.jpg)
 
 ---
 
@@ -818,6 +824,12 @@ pub extern "C" fn main(api: &'static BiosApi) -> !
 * 256 KiB RAM
 * Hardware-accelerated VGA over PIO
 * 16-bit Audio CODEC, SDMMC, Slots
+
+---
+
+# Neotron Pico PCB
+
+![centre h:500px](./figs/neotron-pico-pcb.jpg)
 
 ---
 
