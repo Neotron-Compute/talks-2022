@@ -464,10 +464,14 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 ## Atari
 
-* Atari OS + Atari DOS + Atari BASIC on the 8-bits
-* TOS on the 16-bit machines
-	* Digital Research GEM Desktop + GEMDOS
-* MultiTOS on the 32-bit machines
+* Atari OS + Atari DOS on the 400/800 line
+* "TOS" on the Atari ST/STe
+	* *BIOS*
+	* *GEMDOS* (by Digital Research)
+	* *GEM Desktop* (ditto)
+* MultiTOS on the Atari TT/Falcon
+
+<!-- Atari OS was in ROM, Atari DOS had to be booted from disk and was menu driven. Atari BASIC was a cartridge. TOS didn't have multi-tasking, but MultiTOS did. -->
 
 ---
 
