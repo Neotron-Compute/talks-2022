@@ -116,7 +116,7 @@ marp: true
 	- Often pretend to be memory
 	- Display, Keyboard, Storage, Communications
 
-<!-- You will need *some* non-volatile memory to boot, unless you want to flip toggle switches -->
+<!-- You will need *some* non-volatile memory to boot, unless you want to flip toggle switches. Intel was weird in having dedicated I/O address range - back to the Intel 8008 (or MCS-8). Who remembers the port address for a Creative Labs SoundBlaster? (220h) The first serial port? (3F8h) -->
 
 ---
 
@@ -138,7 +138,7 @@ marp: true
 ## IBM PC 5150
 ###### Rama & Musée Bolo - Wikimedia - CC BY-SA 2.0 fr
 
-<!-- 1982; 4.77 MHz 8088; 64K RAM; 320K FDD; BASIC in ROM; Cassette interface... -->
+<!-- 1982; 4.77 MHz 8088; 64K RAM; 320K FDD; BASIC in ROM; Cassette interface, $1500 (C64 was $595) -->
 
 ---
 
@@ -427,16 +427,17 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 ## Apple
 
-* Almost nothing on the Apple I
-* BASIC on the Apple II
-* Lisa OS
+* Almost nothing on the Apple I (1976)
+* Apple/Microsoft BASIC on the Apple II (1977)
+    * AppleDOS (1978) / ProDOS (1983) / GS-OS (1988)
+* Lisa OS (1983)
 	* Includes a GUI based on the Xerox Star
-* Macintosh System
-	* Cut-down Lisa OS
+* Macintosh System (1984)
+    * Like a cut-down Lisa OS
 	* Later ported from 68k to a PowerPC microkernel
-* Mac OS X is *UNIX'03* certified
+* Mac OS X is *Unix'03* certified
 
-<!-- 256 bytes of Wozmon! System isn't multi-tasking, and has a dumb name -->
+<!-- 256 bytes of Wozmon! System isn't multi-tasking, and has a dumb name. Lisa was $10,000 in 1983 money, but was popular at NASA. The Macintosh was $2,500 -->
 
 ---
 
@@ -450,10 +451,11 @@ Microsoft said sorry with $100M + added DEC Alpha port
 	* Commodore DOS ran on the Floppy Drive!
 * AmigaOS...
 	* *Exec* was the multi-tasking Kernel
-	* *AmigaDOS* was the OS (based on TRIPOS)
+	* *AmigaDOS* was the OS (based on TRIPOS, written in BCPL)
 	* *Intuition* was the GUI
 	* Partially in ROM (Kickstart)
 
+<!-- Tim King ported TRIPOS to Exec in 1984, based on his work with TRIPOS at the University of Cambridge. This was because CAOS (Commodore Amiga OS) was late -->
 ---
 
 ![centre h:560px](./figs/workbench.png)
