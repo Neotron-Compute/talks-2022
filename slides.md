@@ -62,7 +62,7 @@ marp: true
 
 ---
 
-# What does a DOS do?
+# What does a Disk Operating System do?
 
 - __It runs applications__
 - It runs on a computer
@@ -82,7 +82,7 @@ marp: true
 
 ![centre w:900px](./figs/word1.png)
 
-<!-- You can download Word v1 for DOS from winworldpc.com -->
+<!-- You can download Word v1 for MS-DOS from winworldpc.com -->
 
 ---
 
@@ -96,7 +96,7 @@ marp: true
 
 ---
 
-# What does a DOS do?
+# What does a Disk Operating System do?
 
 - It runs applications ✅
 - __It runs on a computer__
@@ -216,7 +216,7 @@ A - Track; B - Geometric Sector; C - Sector; D - Cluster
 
 ---
 
-# What does a DOS do?
+# What does a Disk Operating System do?
 
 - It runs applications ✅
 - It runs on a computer ✅
@@ -253,7 +253,7 @@ A - Track; B - Geometric Sector; C - Sector; D - Cluster
 
 ---
 
-# What does a DOS do?
+# What does a Disk Operating System do?
 
 - It runs applications ✅
 - It runs on a computer ✅
