@@ -327,7 +327,7 @@ Honeywell bought GE's computer division
 
 ---
 
-# UNIX (or Unix)
+# Unix (not UNIX)
 
 * Bell Labs - 1969
 * Ken Thompson, Dennis Ritchie, et. al
@@ -341,7 +341,7 @@ Honeywell bought GE's computer division
 
 ---
 
-## The UNIX family tree
+## The Unix family tree
 
 * Bell Labs' __Research Unix__ V1..V10
 * AT&T __System III & V__
@@ -392,7 +392,7 @@ Honeywell bought GE's computer division
 # Other Microsoft OSes
 
 * MS-DOS
-* Xenix UNIX
+* Xenix Unix
 * OS/2 with IBM
 * 16-bit Windows (1.x, 2.x, 3.x)
 * 16/32-bit Windows (95, 98, Me)
