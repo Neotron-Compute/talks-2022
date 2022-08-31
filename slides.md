@@ -32,7 +32,7 @@ marp: true
 - Embedded Systems Engineer
 - Rust Programmer and Trainer
 	- Formerly: C++, Python, Pascal, BASIC...
-- Ferrous Systems (www.ferrous-systems.com)
+- Ferrous Systems ([ferrous-systems.com](https://www.ferrous-systems.com))
 - ![](https://icongr.am/octicons/mark-github.svg) [github.com/thejpster](https://github.com/thejpster)
 - ![](https://icongr.am/devicon/twitter-original.svg) [twitter.com/therealjpster](https://twitter.com/therealjpster)
 - ![](https://icongr.am/clarity/book.svg) [neotron-compute.github.io](https://neotron-compute.github.io)
