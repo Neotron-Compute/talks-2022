@@ -20,7 +20,7 @@ marp: true
 
 <!-- _class: lead -->
 
-# Writing a single-tasking 'DOS' for Arm microcontrollers, in Rust
+# Neotron - why write a brand new ‘DOS’ for Arm in Rust?
 
 ### Jonathan 'theJPster' Pallant
 ### ![](https://icongr.am/octicons/mark-github.svg) https://github.com/neotron-compute
@@ -32,7 +32,7 @@ marp: true
 - Embedded Systems Engineer
 - Rust Programmer and Trainer
 	- Formerly: C++, Python, Pascal, BASIC...
-- Ferrous Systems (www.ferrous-systems.com)
+- Ferrous Systems ([ferrous-systems.com](https://www.ferrous-systems.com))
 - ![](https://icongr.am/octicons/mark-github.svg) [github.com/thejpster](https://github.com/thejpster)
 - ![](https://icongr.am/devicon/twitter-original.svg) [twitter.com/therealjpster](https://twitter.com/therealjpster)
 - ![](https://icongr.am/clarity/book.svg) [neotron-compute.github.io](https://neotron-compute.github.io)
@@ -62,32 +62,41 @@ marp: true
 
 ---
 
-# What does a DOS do?
+# What does a Disk Operating System do?
 
 - __It runs applications__
 - It runs on a computer
 - It manages files (on disk)
 - It provides portability
 
----
-
-# So what is an application?
-
-![drop-shadow](./figs/application.svg)
 
 ---
 
-# So what is an application?
-
-![drop-shadow](./figs/application-in-out.svg)
-
-<!--
-Talk about batch processing, paper tapes, etc
--->
+![centre w:909px](./figs/word.png)
 
 ---
 
-# What does a DOS do?
+![centre w:900px](./figs/word5.png)
+
+---
+
+![centre w:900px](./figs/word1.png)
+
+<!-- You can download Word v1 for MS-DOS from winworldpc.com -->
+
+---
+
+<!-- _class: photo --> 
+
+##### twitter.com/asr33
+
+![bg cover](./figs/wordle.jpg)
+
+<!-- Your concept of what an application actually is is constrained by the medium through which you interact with that application. In reality, it exists as a pattern of 1s and 0s in the computer's memory, mixing instructions and data. This is the game "Wordle" played on an ASR33 teletype. -->
+
+---
+
+# What does a Disk Operating System do?
 
 - It runs applications ✅
 - __It runs on a computer__
@@ -107,7 +116,7 @@ Talk about batch processing, paper tapes, etc
 	- Often pretend to be memory
 	- Display, Keyboard, Storage, Communications
 
-<!-- You will need *some* non-volatile memory to boot, unless you want to flip toggle switches -->
+<!-- You will need *some* non-volatile memory to boot, unless you want to flip toggle switches. Intel was weird in having dedicated I/O address range - back to the Intel 8008 (or MCS-8). Who remembers the port address for a Creative Labs SoundBlaster? (220h) The first serial port? (3F8h) -->
 
 ---
 
@@ -129,7 +138,7 @@ Talk about batch processing, paper tapes, etc
 ## IBM PC 5150
 ###### Rama & Musée Bolo - Wikimedia - CC BY-SA 2.0 fr
 
-<!-- 1982; 4.77 MHz 8088; 64K RAM; 320K FDD; BASIC in ROM; Cassette interface... -->
+<!-- 1982; 4.77 MHz 8088; 64K RAM; 320K FDD; BASIC in ROM; Cassette interface, $1500 (C64 was $595) -->
 
 ---
 
@@ -156,6 +165,45 @@ Let's play higher-lower
 
 ---
 
+<!-- _class: photo --> 
+
+![bg cover](./figs/IMG_0136.jpeg)
+
+## M.2 Solid State Disk
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/IMG_0137.jpeg)
+
+## 3.5" Hard Disk Drive
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/IMG_0139.jpeg)
+## 3.5" Floppy Disk and Drive
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/IMG_0138.jpeg)
+
+## 5.25" Floppy Disk and Drive
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/all-disks.jpg)
+
+## 8" / 5.25" / 3.5" Floppy Disk Comparison
+
+---
+
 ![centre h:500px](./figs/disk.svg)
 
 A - Track; B - Geometric Sector; C - Sector; D - Cluster
@@ -168,7 +216,7 @@ A - Track; B - Geometric Sector; C - Sector; D - Cluster
 
 ---
 
-# What does a DOS do?
+# What does a Disk Operating System do?
 
 - It runs applications ✅
 - It runs on a computer ✅
@@ -205,7 +253,7 @@ A - Track; B - Geometric Sector; C - Sector; D - Cluster
 
 ---
 
-# What does a DOS do?
+# What does a Disk Operating System do?
 
 - It runs applications ✅
 - It runs on a computer ✅
@@ -279,12 +327,12 @@ Honeywell bought GE's computer division
 
 ---
 
-# UNIX (or Unix)
+# Unix (not UNIX)
 
 * Bell Labs - 1969
 * Ken Thompson, Dennis Ritchie, et. al
 * Initially single-tasking; non-portable
-	* written for the the DEC PDP-7, to play *Space Travel*
+	* written for the DEC PDP-7, to play *Space Travel*
 * Processes, Device Files, Hierarchical File System
 * Proves useful for Word Processing (with `roff`)
 * Re-written in *C* in 1973
@@ -293,7 +341,7 @@ Honeywell bought GE's computer division
 
 ---
 
-## The UNIX family tree
+## The Unix family tree
 
 * Bell Labs' __Research Unix__ V1..V10
 * AT&T __System III & V__
@@ -344,7 +392,7 @@ Honeywell bought GE's computer division
 # Other Microsoft OSes
 
 * MS-DOS
-* Xenix UNIX
+* Xenix Unix
 * OS/2 with IBM
 * 16-bit Windows (1.x, 2.x, 3.x)
 * 16/32-bit Windows (95, 98, Me)
@@ -379,16 +427,17 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 ## Apple
 
-* Almost nothing on the Apple I
-* BASIC on the Apple II
-* Lisa OS
+* Almost nothing on the Apple I (1976)
+* Apple/Microsoft BASIC on the Apple II (1977)
+    * AppleDOS (1978) / ProDOS (1983) / GS-OS (1988)
+* Lisa OS (1983)
 	* Includes a GUI based on the Xerox Star
-* Macintosh System
-	* Cut-down Lisa OS
+* Macintosh System (1984)
+    * Like a cut-down Lisa OS
 	* Later ported from 68k to a PowerPC microkernel
-* Mac OS X is *UNIX'03* certified
+* Mac OS X is *Unix'03* certified
 
-<!-- 256 bytes of Wozmon! System isn't multi-tasking, and has a dumb name -->
+<!-- 256 bytes of Wozmon! System isn't multi-tasking, and has a dumb name. Lisa was $10,000 in 1983 money, but was popular at NASA. The Macintosh was $2,500 -->
 
 ---
 
@@ -402,10 +451,11 @@ Microsoft said sorry with $100M + added DEC Alpha port
 	* Commodore DOS ran on the Floppy Drive!
 * AmigaOS...
 	* *Exec* was the multi-tasking Kernel
-	* *AmigaDOS* was the OS (based on TRIPOS)
+	* *AmigaDOS* was the OS (based on TRIPOS, written in BCPL)
 	* *Intuition* was the GUI
 	* Partially in ROM (Kickstart)
 
+<!-- Tim King ported TRIPOS to Exec in 1984, based on his work with TRIPOS at the University of Cambridge. This was because CAOS (Commodore Amiga OS) was late -->
 ---
 
 ![centre h:560px](./figs/workbench.png)
@@ -416,10 +466,14 @@ Microsoft said sorry with $100M + added DEC Alpha port
 
 ## Atari
 
-* Atari OS + Atari DOS + Atari BASIC on the 8-bits
-* TOS on the 16-bit machines
-	* Digital Research GEM Desktop + GEMDOS
-* MultiTOS on the 32-bit machines
+* Atari OS + Atari DOS on the 400/800 line
+* "TOS" on the Atari ST/STe
+	* *BIOS*
+	* *GEMDOS* (by Digital Research)
+	* *GEM Desktop* (ditto)
+* MultiTOS on the Atari TT/Falcon
+
+<!-- Atari OS was in ROM, Atari DOS had to be booted from disk and was menu driven. Atari BASIC was a cartridge. TOS didn't have multi-tasking, but MultiTOS did. -->
 
 ---
 
@@ -546,7 +600,7 @@ Microsoft said sorry with $100M + added DEC Alpha port
 	* Binary-level compatibility - register/stack usage
 	* Support single CPU architecture (although ... [ARM64EC](https://blogs.windows.com/windowsdeveloper/2021/06/28/announcing-arm64ec-building-native-and-interoperable-apps-for-windows-11-on-arm/))
 
-<!-- Debian has no fixed API across x86/ARM/PPC/etc. FreeBSD AMD64 presents ABI compatibility with Linux AMD64 -->
+<!-- Debian has no fixed ABI across x86/ARM/PPC/etc. FreeBSD AMD64 presents ABI compatibility with Linux AMD64 -->
 
 ---
 
@@ -757,7 +811,13 @@ pub extern "C" fn main(api: &'static BiosApi) -> !
 * 80 MHz Cortex-M4
 * 32 KiB RAM
 * Real-time VGA over SPI
-* PWM Audio, SDMMC, 2x Joytick, MIDI
+* PWM Audio, SDMMC, 2x Joystick, MIDI
+
+---
+
+# Neotron 32 PCB
+
+![centre h:500px](./figs/neotron-32.jpg)
 
 ---
 
@@ -770,6 +830,12 @@ pub extern "C" fn main(api: &'static BiosApi) -> !
 * 256 KiB RAM
 * Hardware-accelerated VGA over PIO
 * 16-bit Audio CODEC, SDMMC, Slots
+
+---
+
+# Neotron Pico PCB
+
+![centre h:500px](./figs/neotron-pico-pcb.jpg)
 
 ---
 
