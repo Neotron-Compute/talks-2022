@@ -61,8 +61,8 @@ marp: true
 ## Some features...
 
 * Processing Power
-* Inputs
-* Outputs
+* Memory
+* Input/Output
 * Storage
 * Can I run *my* code on it?
 
@@ -158,44 +158,59 @@ marp: true
 
 ---
 
-## Inputs
+## Memory
 
-|       | System 360 | Altair 8800 | IBM PC    | Amiga 500 | Mac Book |
-| ----- | ---------- | ----------- | --------- | --------- | -------- |
-| MIPS  | 0.03       | 0.3         | 0.4       | 1.4       | ~200,000 |
-| Input | Serial     | Serial      | KB/Serial | KB/Serial | KB/USB   |
+|        | System 360 | Altair 8800 | IBM PC | Amiga 500 | Mac Book    |
+| ------ | ---------- | ----------- | ------ | --------- | ----------- |
+| MIPS   | 0.03       | 0.3         | 0.4    | 1.4       | ~200,000    |
+| Memory | 64K        | 1K          | 64K    | 512K      | 16,777,216K |
 
 ---
 
-## Outputs
+## Input/Output
 
-|        | System 360 | Altair 8800 | IBM PC  | Amiga 500 | Mac Book |
-| ------ | ---------- | ----------- | ------- | --------- | -------- |
-| MIPS   | 0.03       | 0.3         | 0.4     | 1.4       | ~200,000 |
-| Input  | Serial     | Serial      | KB      | KB        | KB/etc.  |
-| Output | Serial     | Serial      | Monitor | TV        | LCD/etc. |
+|        | System 360 | Altair 8800 | IBM PC | Amiga 500 | Mac Book |
+| ------ | ---------- | ----------- | ------ | --------- | -------- |
+| MIPS   | 0.03       | 0.3         | 0.4    | 1.4       | ~200,000 |
+| Memory | 64K        | 1K          | 64K    | 512K      | 16G      |
+| I/O    | Serial     | Serial      | KB/TV  | KB/TV     | KB/LCD   |
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/wordle.jpg)
+
+## ASR 33 Teletype
+###### twitter.com/asr33
 
 ---
 
 ## Storage
 
-|         | System 360 | Altair 8800 | IBM PC     | Amiga 500 | Mac Book |
-| ------- | ---------- | ----------- | ---------- | --------- | -------- |
-| MIPS    | 0.03       | 0.3         | 0.4        | 1.4       | ~200,000 |
-| Input   | Serial     | Serial      | KB         | KB        | KB/etc.  |
-| Output  | Serial     | Serial      | Monitor    | TV        | LCD      |
-| Storage | Mag Tape   | Paper Tape  | 5.25" Disk | 3.5" Disk | SSD      |
+|         | System 360 | Altair 8800 | IBM PC     | Amiga 500 | Mac Book   |
+| ------- | ---------- | ----------- | ---------- | --------- | ---------- |
+| MIPS    | 0.03       | 0.3         | 0.4        | 1.4       | ~200,000   |
+| Memory  | 64K        | 1K          | 64K        | 512K      | 16G        |
+| I/O     | Serial     | Serial      | KB/TV      | KB/TV     | KB/LCD     |
+| Storage | Mag Tape   | Paper Tape  | 5.25" Disk | 3.5" Disk | NAND Flash |
+
+---
+
+<!-- _class: photo --> 
+
+![bg cover](./figs/all-disks.jpg)
 
 ---
 
 ## Can I run *my* code on it?
 
-|          | System 360 | Altair 8800 | IBM PC   | Amiga 500 | Mac Book |
-| -------- | ---------- | ----------- | -------- | --------- | -------- |
-| Input    | Serial     | Serial      | KB       | KB        | KB/etc.  |
-| Output   | Serial     | Serial      | Monitor  | TV        | LCD      |
-| Storage  | Mag Tape   | Paper Tape  | 5¼" Disk | 3½" Disk  | SSD      |
-| Run Code | Yes        | Yes         | Yes      | Yes       | Yes      |
+|          | System 360 | Altair 8800 | IBM PC   | Amiga 500 | Mac Book   |
+| -------- | ---------- | ----------- | -------- | --------- | ---------- |
+| Memory   | 64K        | 1K          | 64K      | 512K      | 16G        |
+| I/O      | Serial     | Serial      | KB/TV    | KB/TV     | KB/LCD     |
+| Storage  | Mag Tape   | Paper Tape  | 5¼" Disk | 3½" Disk  | NAND Flash |
+| Run Code | Yes        | Yes         | Yes      | Yes       | Yes        |
 
 ---
 
@@ -203,20 +218,19 @@ marp: true
 
 ![bg cover](./figs/ipads.jpg)
 
-## Apple iPad (2010)
-###### Maurizio Pesce - Wikipedia - CC-BY 2.0
+## Apple iPad
 
 ---
 
 ## Is the iPad a computer?
 
-|          | iPad (2010) |
-| -------- | ----------- |
-| MIPS     | 10,000      |
-| Input    | Touchscreen |
-| Output   | LCD         |
-| Storage  | SSD         |
-| Run Code | ....?       |
+|          | iPad (2010)       |
+| -------- | ----------------- |
+| MIPS     | 10,000            |
+| Memory   | 256M              |
+| I/O      | Touchscreen / LCD |
+| Storage  | NAND Flash        |
+| Run Code | ....?             |
 
 ---
 
@@ -240,21 +254,19 @@ marp: true
 
 * Two Arm Cortex-M0+ Processors
 * 264 KiB RAM
-* Interface for example Flash ROM
+* Interface for external NOR Flash ROM
 * Lots of serial/parallel interfaces
 * Requires external 12 MHz crystal
 
 ---
 
-## Inputs/Outputs
-
-|          | Pi Pico     |
-| -------- | ----------- |
-| MIPS     | 120         |
-| Input    | Serial      |
-| Output   | Serial      |
-| Storage  | Flash       |
-| Run Code | ....        |
+|          | System 360 | Altair 8800 | IBM PC     | Amiga 500 | Pi Pico |
+| -------- | ---------- | ----------- | ---------- | --------- | ------- |
+| MIPS     | 0.03       | 0.3         | 0.4        | 1.4       | 120     |
+| Input    | Serial     | Serial      | KB         | KB        | Serial  |
+| Output   | Serial     | Serial      | Monitor    | TV        | Serial  |
+| Storage  | Mag Tape   | Paper Tape  | 5.25" Disk | 3.5" Disk | Flash   |
+| Run Code | Yes        | Yes         | Yes        | Yes       | ...     |
 
 ---
 
@@ -272,7 +284,7 @@ marp: true
 
 ## What is it?
 
-* An open-source computing platform, designed around Arm Microcontrollers.
+* An open-source computing platform, designed around Arm Microcontrollers
 * The BIOS and OS are written in Rust
 
 ---
@@ -280,6 +292,16 @@ marp: true
 ## Why it exists
 
 > Neotron is an attempt to make computers simple again, whilst also taking advantage of the very latest in programming language development.
+
+---
+
+## Check list
+
+* Off-the-shelf in-production components 
+* Fully open source
+* Possible to assemble at home
+* Possible for one person to understand, top to bottom
+* Is a *computer*
 
 ---
 
@@ -297,7 +319,7 @@ marp: true
 
 ## The Neotron Pico
 
-* PS/2 Keyboard Input
+* PS/2 Keyboard Input (+ Mouse)
 * VGA Video Output
 * SD Card for storage
 * 16-bit stereo audio
@@ -305,7 +327,35 @@ marp: true
 
 ---
 
+## What can it do?
+
+* Read from a PS/2 Keyboard
+* 80x25 or 80x50 text mode in 16 colours
+* Tell the time
+* Go beep
+  * Technically, tell the other microcontroller to go beep
+* Load applications
+  * ... if you type in the raw bytes
+
+---
+
+## What's next?
+
+* SD Card Support
+* Load applications from SD card
+* Audio support
+* Built-in BASIC?
+* Expansion cards...
+
+---
+
 # Conclusions!
+
+---
+
+<!-- _class: lead -->
+
+# Is the Pi Pico a computer?
 
 ---
 
@@ -319,6 +369,12 @@ marp: true
 <!-- _class: lead -->
 
 # Can you turn it into a computer?
+
+---
+
+<!-- _class: lead -->
+
+# Can you turn it into a computer?
 # Yes
 
 ---
@@ -326,7 +382,14 @@ marp: true
 <!-- _class: lead -->
 
 # Would you like to see it?
+
+---
+
+<!-- _class: lead -->
+
+# Would you like to see it?
 # It's on display outside!
+
 
 ---
 
